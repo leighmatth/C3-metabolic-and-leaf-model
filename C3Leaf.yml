@@ -2,7 +2,7 @@ model:
   name: C3Leaf
   language: matlab
   args: ./LeafWrap2.m
-  function: LeafWrap
+  function: LeafWrap2
   inputs:
     - name: Env
       outside_loop: true
