@@ -23,7 +23,7 @@ end
 Einput=ExpValue;
 Edata=importdata('Einput7.txt');
 Eio=Edata.data(:,1);
-MetaOnly=0;% if MetaOnly=1 run Metabolic model
+MetaOnly=1;% if MetaOnly=1 run Metabolic model
 
 WeatherTemp=25;
 Air_CO2=400;

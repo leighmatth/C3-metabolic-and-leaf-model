@@ -1,7 +1,7 @@
 model:
   name: C3Leaf
   language: matlab
-  args: ./LeafWrap.m
+  args: ./LeafWrap2.m
   function: LeafWrap
   inputs:
     - name: Env
