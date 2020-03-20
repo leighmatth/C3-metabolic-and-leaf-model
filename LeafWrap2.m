@@ -20,23 +20,23 @@ function LeafAssim=LeafWrap2(Env, Einput, Eio)
   
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %Einput=inE.data;
-  Einput=ExpValue;
-  Edata=importdata('Einput7.txt');
-  Eio=Edata.data(:,1);
+  %Einput=ExpValue;
+  %Edata=importdata('Einput7.txt');
+  %Eio=Edata.data(:,1);
   MetaOnly=0;% if MetaOnly=1 run Metabolic model
   
-  WeatherTemp=25;
-  Air_CO2=400;
-  WeatherRH=0.6;
-  WeatherWind=5;
-  Radiation_PAR=470*0.85*0.85;%%%%
-  Convert=1E6/(2.35E5); %Convert W m^{-2} to u moles m^{-2} s^{-1}
-  Radiation_NIR=0;
-  Radiation_LW=0;
-  PhotosynthesisType=1.1;
-  Vcmax25=100;
-  Jmax25=200;
-  GRNC=1;
+  %WeatherTemp=25;
+  %Air_CO2=400;
+  %WeatherRH=0.6;
+  %WeatherWind=5;
+  %Radiation_PAR=470*0.85*0.85;%%%%
+  %Convert=1E6/(2.35E5); %Convert W m^{-2} to u moles m^{-2} s^{-1}
+  %Radiation_NIR=0;
+  %Radiation_LW=0;
+  %PhotosynthesisType=1.1;
+  %Vcmax25=100;
+  %Jmax25=200;
+  %GRNC=1;
 
   if MetaOnly==1
     CO2i=Air_CO2*0.7; % intercellular CO2 
