@@ -39,8 +39,8 @@ function LeafAssim=LeafWrap2(Env, Einput, Eio)
   %GRNC=1;
 
   if MetaOnly==1
-    CO2i=Air_CO2*0.7; % intercellular CO2 
-    PPFDi=Radiation_PAR*Convert;
+    %CO2i=Air_CO2*0.7; % intercellular CO2 
+    %PPFDi=Radiation_PAR*Convert;
     NetAssimilation=EPS_Drive_GRNs(ExpValue,Env('Air_CO2'),...
         Env('Radiation_PAR'),Env('WeatherTemperature'),Env('GRNC'),0,Eio);
   else
