@@ -23,7 +23,7 @@ function LeafAssim=LeafWrap2(Env, Einput, Eio)
   %Einput=ExpValue;
   %Edata=importdata('Einput7.txt');
   %Eio=Edata.data(:,1);
-  MetaOnly=0;% if MetaOnly=1 run Metabolic model
+  MetaOnly=1;% if MetaOnly=1 run Metabolic model
   
   %WeatherTemp=25;
   %Air_CO2=400;
@@ -41,7 +41,8 @@ function LeafAssim=LeafWrap2(Env, Einput, Eio)
   if MetaOnly==1
     CO2i=Air_CO2*0.7; % intercellular CO2 
     PPFDi=Radiation_PAR*Convert;
-    NetAssimilation=EPS_Drive_GRNs(Einput,CO2i,PPFDi,WeatherTemp,GRNC,0,Eio);
+    NetAssimilation=EPS_Drive_GRNs(ExpValue,Env('Air_CO2'),...
+        Env('Radiation_PAR'),Env('WeatherTemperature'),Env('GRNC'),0,Eio);
   else
     LeafResult=Leaf(Env('WeatherRH'),Env('WeatherTemperature'),Env('Air_CO2'),...
         Env('WeatherWind'),Env('Radiation_PAR'),Env('Radiation_NIR'),...
