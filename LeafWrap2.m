@@ -30,7 +30,7 @@ function LeafAssim=LeafWrap2(Env, Einput, Eio)
   %WeatherRH=0.6;
   %WeatherWind=5;
   %Radiation_PAR=470*0.85*0.85;%%%%
-  %Convert=1E6/(2.35E5); %Convert W m^{-2} to u moles m^{-2} s^{-1}
+  Convert=1E6/(2.35E5); %Convert W m^{-2} to u moles m^{-2} s^{-1}
   %Radiation_NIR=0;
   %Radiation_LW=0;
   %PhotosynthesisType=1.1;
@@ -39,10 +39,10 @@ function LeafAssim=LeafWrap2(Env, Einput, Eio)
   %GRNC=1;
 
   if MetaOnly==1
-    %CO2i=Air_CO2*0.7; % intercellular CO2 
-    %PPFDi=Radiation_PAR*Convert;
-    NetAssimilation=EPS_Drive_GRNs(ExpValue,Env('Air_CO2'),...
-        Env('Radiation_PAR'),Env('WeatherTemperature'),Env('GRNC'),0,Eio);
+    CO2i=Air_CO2*0.7; % intercellular CO2 
+    PPFDi=Radiation_PAR*Convert;
+    NetAssimilation=EPS_Drive_GRNs(ExpValue,CO2i,...
+        PPFDi,Env('WeatherTemperature'),Env('GRNC'),0,Eio);
   else
     LeafResult=Leaf(Env('WeatherRH'),Env('WeatherTemperature'),Env('Air_CO2'),...
         Env('WeatherWind'),Env('Radiation_PAR'),Env('Radiation_NIR'),...
