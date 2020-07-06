@@ -18,6 +18,7 @@ Ci = Air_CO2 - 1.37 * NetAssimilation / Gb - 1.6 * NetAssimilation / Gs; % Updat
 %     {
 %         LeafState->Ci = LeafState->GammaStar; // ppm
 %     }
+CalGs=zeros(1,2); %% Added my mlm to use matlab coder 7/6/20
 CalGs(1)=Gs;
 CalGs(2)=Ci;
 end

@@ -55,9 +55,9 @@ options1 = odeset('RelTol',1e-4);
 time = tglobal;
 
 global Arate;
-global options1;
-global tglobal;
-time = tglobal;
+% global options1; %% Commented out by mlm to use matlab coder 7/6/20
+% global tglobal; %% Commented out by mlm to use matlab coder 7/6/20
+% time = tglobal; %% Commented out by mlm to use matlab coder 7/6/20
 
 %%%%%%%%%%%%%%%%%%%%%%%%
 %   Calculation  step %

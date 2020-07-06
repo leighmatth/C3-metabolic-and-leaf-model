@@ -93,6 +93,7 @@ Gb = 10.2; % Initial boundary layer conductance moles/m2 leaf area/s
         ErrorCount = ErrorCount + 1;
     end
 
+LeafA=zeros(1,5); %% Added my mlm to use matlab coder 7/6/20
 LeafA(1)=Ci;
 LeafA(2)=NetAssimilation;
 LeafA(3)=Gs;

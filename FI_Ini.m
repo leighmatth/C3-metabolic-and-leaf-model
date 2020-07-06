@@ -28,6 +28,7 @@
 % concentration of components of photosystems.
 
 function FI_Con = FI_Ini(begin)
+
 global cpsii;
 %cpsii=1.0169;% 1.0129;%WY201803
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

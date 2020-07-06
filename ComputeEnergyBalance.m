@@ -19,13 +19,14 @@ function CalLeafTemperature=ComputeEnergyBalance(Gb,Gs,NetAssimilation,LeafTempe
      Radiation_LW = LWFactor * Epsilon * Boltzman *(273.15 + WeatherTemperature) ^4;
      end
 
-
+ CoefficientESaturation=zeros(1,5); %% Added my mlm to use matlab coder 7/6/20
  CoefficientESaturation(1)=5.82436 / 10000.0 / 1000.0; % pow(LeafTemperature,4) KPa
  CoefficientESaturation(2)=1.5842 / 100.0 / 1000; %pow(LeafTemperature,3) KPa
  CoefficientESaturation(3)=1.55186 / 1000.0; %pow(LeafTemperature,2) KPa
  CoefficientESaturation(4)=44.513596 / 1000.0; %pow(LeafTemperature,1) KPa
  CoefficientESaturation(5)=607.919 / 1000.0; %pow(LeafTemperature,0) KPa
 
+ CoefficientTemperature=zeros(1,5); %% Added my mlm to use matlab coder 7/6/20
  CoefficientTemperature(1) = LEFactor * G * LatentHeatVaporization / (Pressure / 1000.0)*CoefficientESaturation(1) + LWFactor * Epsilon * Boltzman; %pow(LeafTemperature,4)
  CoefficientTemperature(2) = LEFactor * G * LatentHeatVaporization / (Pressure / 1000.0)*CoefficientESaturation(2) + 4 * LWFactor * Epsilon * Boltzman * 273.15; %pow(LeafTemperature,3)
  CoefficientTemperature(3) = LEFactor * G * LatentHeatVaporization / (Pressure / 1000.0)*CoefficientESaturation(3) + 6 * LWFactor * Epsilon * Boltzman * 273.15^2.0; %pow(LeafTemperature,2)
@@ -71,6 +72,7 @@ function CalLeafTemperature=ComputeEnergyBalance(Gb,Gs,NetAssimilation,LeafTempe
 %         %fprintf(LogOutputFile, "Error in ComputeEnergyBalance for Leaf ID %f: Residual energy balance=%f W/m2\n",
 %         %       Photosynthesis->LeafID, EnergyBalanceResidual);
 %     }
+    CalLeafTemperature=zeros(1,2); %% Added my mlm to use matlab coder 7/6/20
     CalLeafTemperature(1)=LeafTemperature;
     CalLeafTemperature(2)=Transpiration;
     end

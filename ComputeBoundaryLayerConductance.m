@@ -29,6 +29,7 @@ function BoundaryCound=ComputeBoundaryLayerConductance(WeatherTemperature,LeafTe
  end
  Gb = Gb * 41.4; %Conversion from m/s to moles/m2 leaf area/s
  Cb = Air_CO2 - 1.37 * NetAssimilation / Gb; % ppm
+ BoundaryCound=zeros(1,3); %% Added my mlm to use matlab coder 7/6/20
  BoundaryCound(1)=Gb;
  BoundaryCound(2)=Cb;
  BoundaryCound(3)=Eb;

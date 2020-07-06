@@ -54,7 +54,7 @@ LeafTemperatureKelvin = LeafTemperature + 273.15; %Leaf temperature in K
 GammaStar = exp(19.02 - 37.83 / (R * LeafTemperatureKelvin));
 end
 
-
+PhotosynthesisRate=zeros(1,4); %% Added my mlm to use matlab coder 7/6/20
 PhotosynthesisRate(1)=NetAssimilation;
 PhotosynthesisRate(2)=GrossAssimilation;
 PhotosynthesisRate(3)=Rd;

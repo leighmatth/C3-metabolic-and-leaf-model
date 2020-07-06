@@ -64,6 +64,7 @@ FI_Pool(2) = FIBF_Pool(1);
 BF_Pool(8) = FIBF_Pool(1);
 
 % Initial concentration for FIBF_Con
+FIBF_Con=zeros(1,52); %% Added my mlm to use matlab coder 7/6/20
     for m = 1:29
         FIBF_Con(m) = BF_Con(m);
     end
@@ -113,7 +114,7 @@ CMs = CM_Ini(Begin);
 %   Use the initialized variables to construct variables that will be transfered to the Drive file. %%%%%%
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
+EPS_Con=zeros(1,87); %% Added my mlm to use matlab coder 7/6/20
 for m = 1:52
     EPS_Con(m) = FIBF_Con(m);
 end
