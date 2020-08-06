@@ -61,10 +61,25 @@ LeafTemperature= WeatherTemperature;% Initial Leaf temperature C
 Ci = 0.7 * Air_CO2;%Initial Ci u moles/mole
 Gs = 0.01; % Initial stomatal conductance moles/m2 leaf area/s
 Gb = 10.2; % Initial boundary layer conductance moles/m2 leaf area/s
+
+  % Rearrange Einput to use the same order as sample
+  inE = importdata('MeM_input5_0.txt');
+  GeneOrder = inE.textdata(2:size(inE.textdata, 1), 1);
+  GeneNo = size(GeneOrder, 1);
+  GeneMap = containers.Map(Einput{:, 1}, Einput{:, 2});
+  ExpValue = ones(GeneNo, 1);
+  for i=1:GeneNo
+    if isKey(GeneMap, GeneOrder{i, 1})
+      ExpValue(i, 1) = GeneMap(GeneOrder{i, 1});
+    else
+      fprintf("Gene %s is missing.\n", GeneOrder{i, 1});
+    end
+  end
+
     %Convergence loop for leaf
 	while ((abs(ErrorLeafState_Ci) >= MinError || abs(ErrorLeafState_Gs) >= MinError ||abs(ErrorLeafState_Temperature) >= MinError) && ErrorCount <= MaxErrorCount)
 
-            PhotosynthesisRate=ComputPhotosynthesisRate(PhotosynthesisType,PhotosynthesQ10,Vcmax25,Jmax25,Rd25,R,LeafTemperature,Convert, Radiation_PAR,PhotosynthesisTheta,Ci,Air_O2,GRNC,Einput,Eio);
+	  PhotosynthesisRate=ComputPhotosynthesisRate(PhotosynthesisType,PhotosynthesQ10,Vcmax25,Jmax25,Rd25,R,LeafTemperature,Convert, Radiation_PAR,PhotosynthesisTheta,Ci,Air_O2,GRNC,ExpValue,Eio{:,2});
             NetAssimilation=PhotosynthesisRate(1);
             GrossAssimilation=PhotosynthesisRate(2);
             Rd=PhotosynthesisRate(3);
