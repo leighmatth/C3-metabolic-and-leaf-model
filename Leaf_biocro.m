@@ -4,7 +4,8 @@ WeatherRH=BioCro_params('rh');
 WeatherTemperature=BioCro_params('temp');
 Air_CO2=BioCro_params('Catm');
 WeatherWind=BioCro_params('windspeed');
-Radiation_PAR=BioCro_params('incident_par_micromol');
+% Radiation_PAR=BioCro_params('incident_par_micromol');
+Radiation_PAR=BioCro_params('incident_par');
 Radiation_NIR=BioCro_params('radiation_nir');
 Radiation_LW=BioCro_params('radiation_longwave');
 PhotosynthesisType=BioCro_params('photosynthesis_type');
@@ -28,8 +29,8 @@ GRNC=1.0;
 
 PhotosynthesQ10=0;
 R=8.314472E-3;%Gas constant KJ mole^{-1} K^{-1}
-% Convert=1E6/(2.35E5); %Convert W m^{-2} to u moles m^{-2} s^{-1}
-Convert=1; %BioCro passes in umoles m^{-2} s^{-1}
+Convert=1E6/(2.35E5); %Convert W m^{-2} to u moles m^{-2} s^{-1}
+% Convert=1; %BioCro passes in umoles m^{-2} s^{-1}
 Boltzman=5.6697E-8; % Stefan-Boltzmann constant W m^{-2} K^{-4}
 LatentHeatVaporization=44000.0;%J mole^{-1}
 % Pressure=101325.0; % Standard atmospheric pressure Pa
@@ -134,7 +135,12 @@ Gb = 10.2; % Initial boundary layer conductance moles/m2 leaf area/s
         PreviousLeafMassFlux_NetAssimilation = NetAssimilation;
         ErrorCount = ErrorCount + 1;
     end
-    
+
+% unit conversions
+% Ci = Ci; % umol/mol -> umol/mol
+Gs = 1e3*Gs; % mol/m2/s -> mmol/m2/s
+Transpiration = 1e-3*Transpiration; % umol/m2/s -> mmol/m2/s
+
 keySet={'Ci', 'NetAssimilation', 'GrossAssimilation', 'Gs', 'LeafTemperature', 'Transpiration'};
 valueSet=[Ci, NetAssimilation, GrossAssimilation, Gs, LeafTemperature, Transpiration];
 LeafA=containers.Map(keySet,valueSet);  
@@ -144,4 +150,5 @@ LeafA=containers.Map(keySet,valueSet);
 % LeafA(3)=Gs;
 % LeafA(4)=LeafTemperature;
 % LeafA(5)=Transpiration;
+% fprintf('goodbye from matlab server: A=%d, GA=%d\n',NetAssimilation,GrossAssimilation)
 end
